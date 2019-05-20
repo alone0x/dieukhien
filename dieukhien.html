@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let dieuKhien = function () {
+        this.kenh = [];
+        let i =1;
+        this.batTat = function (tivi) {
+            i++;
+            if(1%2 === 0){tivi.batTat =  "on"}
+            else tivi.batTat =  "off"
+        };
+        this.nhapKenh = function (x) {
+            x = parseInt(prompt("nhập kệnh : "));
+            this.kenh.push(x);
+        };
+        this.chuyenKenh = function (tivi) {
+            tivi.kenh.push(this.kenh[this.kenh.length - 1]);
+            this.kenh.pop();
+        };
+        this.amLuongtang = function (tivi) {
+            tivi.amLuongHt += 2;
+        };
+        this.amLuonggiam = function (tivi) {
+            tivi.amLuongHt -= 2;
+        }
+
+    };
+    let tiVi = function () {
+        this.kenhHt = 1;
+        this.amLuongHt = Number(0);
+        this.batTat = "";
+        this.kenh = [];
+        this.kenhHientai = function () {
+            this.kenhHt = this.kenh[0];
+            this.kenh.pop();
+        };
+    };
+    let remote = new dieuKhien();
+    let tv = new tiVi();
+    remote.nhapKenh(3);
+    remote.chuyenKenh(tv);
+    console.log(tv.kenhHt);
+    remote.nhapKenh(7);
+    remote.chuyenKenh(tv);
+    console.log(tv.kenhHt);
+    remote.amLuongtang(tv);
+    console.log(tv.amLuongHt);
+    remote.batTat(tv);
+    console.log(tv.batTat);
+
+
+
+
+
+
+</script>
+</body>
+</html>
